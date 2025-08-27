@@ -1,0 +1,29 @@
+import tkinter as tk
+import random
+
+def yes_clicked():
+    label.config(text="😊 I Love You Too!")
+
+def move_no_button(event):
+    # নতুন এলোমেলো অবস্থান
+    new_x = random.randint(50, 300)
+    new_y = random.randint(50, 200)
+    no_button.place(x=new_x, y=new_y)
+
+root = tk.Tk()
+root.title("Do You Love Me?")
+root.geometry("400x300")
+
+label = tk.Label(root, text="Do you love me?", font=("Arial", 18))
+label.pack(pady=20)
+
+yes_button = tk.Button(root, text="Yes 💖", font=("Arial", 14), command=yes_clicked)
+yes_button.place(x=100, y=200)
+
+no_button = tk.Button(root, text="No 💔", font=("Arial", 14))
+no_button.place(x=200, y=200)
+
+# যখন 'No' বাটনের উপর মাউস যাবে তখন বাটন পালাবে
+no_button.bind("<Enter>", move_no_button)
+
+root.mainloop()
